@@ -6,11 +6,19 @@ const isValidUrl = (url) => {
   else { return false; }
 };
 
-const formUrl = (url) => {
-  return undefined;
+const formatUrl = (url) => {
+  let formattedUrl = url;
+
+  if (!isValidUrl(url)) { throw Error('Invalid URL'); }
+
+  if (!~url.indexOf('http')) {
+    formattedUrl = `http://${url}`;
+  }
+
+  return formattedUrl;
 };
 
 module.exports = {
   isValidUrl,
-  formUrl
+  formatUrl
 };

@@ -1,4 +1,4 @@
-import { isValidUrl, formUrl } from '../../utils/helpers';
+import { isValidUrl, formatUrl } from '../../utils/helpers';
 import { expect } from 'chai';
 
 describe('Utils', () => {
@@ -24,11 +24,21 @@ describe('Utils', () => {
       expect(isValidUrl('http:/www.google.com')).to.equal(false);
       expect(isValidUrl('blahblahfoobar')).to.equal(false);
     });
-
   });
 
-  describe('formUrl', () => {
+  describe('formatUrl', () => {
+    it('adds "http://" when missing', () => {
+      expect(formatUrl('www.google.com')).to.equal('http://www.google.com');
+    });
 
+    it('doesn’t add anything to invalid URLs', () => {
+      const badFormat = formatUrl.bind(this, 'foobarblahblah');
+      expect(badFormat).to.throw(Error, /Invalid URL/);
+    });
+
+    it('doesn’t re-add "http://" if already present', () => {
+      expect(formatUrl('http://www.google.com')).to.equal('http://www.google.com');
+    });
   });
 
 });
