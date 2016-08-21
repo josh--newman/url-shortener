@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
-    "test": "mocha --compilers js:babel-core/register --recursive ./specs/"
+    "test": "mocha --compilers js:babel-core/register --recursive ./specs/",
+    "test:watch": "npm test -- --watch"
   },
   "author": "Josh Newman",
   "license": "ISC",
