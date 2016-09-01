@@ -11,3 +11,7 @@ A service that shortens URLs. Written in Node.
 2. Look up hash in data store
 3. If valid, redirect user to full URL
 4. If not valid, show 404
+
+### TODO
+- [ ] Write front end components
+- [ ] Turn `/` into static route
