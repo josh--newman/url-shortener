@@ -1,5 +1,7 @@
 'use strict';
 
+const path = require('path');
+
 module.exports = (req, res, dbRef) => {
   const urlsColl = dbRef.collection('urls');
   const hash = req.url.replace('/','');
@@ -7,11 +9,10 @@ module.exports = (req, res, dbRef) => {
   urlsColl.findOne({hash: hash}, (err, match) => {
 
     if (match) {
-      // put http:// on front if needed
       res.redirect(match.url);
     }
     else {
-      res.send('No matches found');
+      res.sendStatus(204); // No Content
     }
 
   });
