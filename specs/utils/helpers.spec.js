@@ -21,7 +21,7 @@ describe('Utils', () => {
 
     it('knows that invalid URLs are invalid', () => {
       expect(isValidUrl('httpwwwgooglecom')).to.equal(false);
-      expect(isValidUrl('http:/www.google.com')).to.equal(false);
+      expect(isValidUrl('foobar@howisthisaurl')).to.equal(false);
       expect(isValidUrl('blahblahfoobar')).to.equal(false);
     });
   });
